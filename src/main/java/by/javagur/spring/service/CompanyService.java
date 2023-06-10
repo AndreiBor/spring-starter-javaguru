@@ -6,10 +6,12 @@ import by.javagur.spring.listener.AccessType;
 import by.javagur.spring.listener.EntityEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional
 public class CompanyService {
 
     private final CompanyRepository companyRepository;
@@ -24,7 +26,7 @@ public class CompanyService {
     public Optional<CompanyReadDto> findById(Integer id) {
         return companyRepository.findById(id).map(entity -> {
             applicationEventPublisher.publishEvent(new EntityEvent(entity, AccessType.DELETE));
-            return new CompanyReadDto(entity.id());
+            return new CompanyReadDto(entity.getId());
         });
     }
 }

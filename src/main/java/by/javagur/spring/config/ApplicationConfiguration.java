@@ -20,10 +20,5 @@ public class ApplicationConfiguration {
         return new ConnectionPool("mysql", "123", 100, "---");
     }
 
-    @Bean
-    @Profile("prod&web")
-    public UserRepository userRepository() {
-        return new UserRepository(connectionPool2());
-    }
 
 }
