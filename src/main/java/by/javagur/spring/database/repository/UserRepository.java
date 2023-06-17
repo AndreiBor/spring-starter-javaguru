@@ -4,6 +4,7 @@ import by.javagur.spring.database.entity.Role;
 import by.javagur.spring.database.entity.User;
 import by.javagur.spring.dto.IPersonalInfo;
 import by.javagur.spring.dto.PersonalInfo;
+import by.javagur.spring.dto.UserFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -11,17 +12,19 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long>,
+        FilterUserRepository, QuerydslPredicateExecutor<User>  {
 
     @Query(value = "select u.firstname, u.lastname, u.birth_date birthDate from users u " +
             "where u.company_id = :companyId",
-    nativeQuery = true)
+            nativeQuery = true)
     List<IPersonalInfo> findAllByCompanyId(Integer companyId);
 
     Page<User> findAllBy(Pageable pageable);
@@ -40,4 +43,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("update User u set u.role = :role " +
             "where u.id in (:ids)")
     int updateRole(Role role, Long... ids);
+
 }
