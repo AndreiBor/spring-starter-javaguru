@@ -43,3 +43,6 @@ spring:
       show_sql: true
       format_sql: true
       hbm2ddl.auto: validate
+app:
+  image:
+    bucket: E:\AAA\JavaGuru\JavaEnterprise\Projects\spring-starter-javaguru\images
