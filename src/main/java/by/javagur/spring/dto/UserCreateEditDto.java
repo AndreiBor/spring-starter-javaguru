@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class UserCreateEditDto {
     @Email
     String username;
-
+    String rawPassword;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     LocalDate birthDate;
     @Size(min = 3, max = 30)

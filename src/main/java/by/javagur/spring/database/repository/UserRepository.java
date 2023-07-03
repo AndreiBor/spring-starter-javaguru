@@ -5,6 +5,7 @@ import by.javagur.spring.database.entity.User;
 import by.javagur.spring.dto.IPersonalInfo;
 import by.javagur.spring.dto.PersonalInfo;
 import by.javagur.spring.dto.UserFilter;
+import by.javagur.spring.mapper.Mapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -44,4 +45,5 @@ public interface UserRepository extends JpaRepository<User, Long>,
             "where u.id in (:ids)")
     int updateRole(Role role, Long... ids);
 
+    Optional<User> findByUsername(String username);
 }

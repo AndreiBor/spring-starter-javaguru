@@ -3,15 +3,9 @@ package by.javaguru.integration.repository;
 import by.javagur.spring.database.entity.Company;
 import by.javagur.spring.database.repository.CompanyRepository;
 import by.javaguru.annotation.IT;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.annotation.Commit;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
