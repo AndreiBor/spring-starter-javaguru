@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static by.javagur.spring.database.entity.Role.ADMIN;
-import static by.javagur.spring.database.entity.Role.OPERATOR;
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 @Configuration
@@ -27,9 +26,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/users/registration", "/v3/api-docs/", "/swagger-ui/").permitAll()
                         .requestMatchers("/admin/**").hasRole(ADMIN.getAuthority())
-                        .requestMatchers(antMatcher("/users/{\\d}/delete")).hasAnyAuthority(ADMIN.getAuthority(), OPERATOR.getAuthority())
+                        .requestMatchers(antMatcher("/users/{\\d}/delete")).hasAnyAuthority(ADMIN.getAuthority())
                         .anyRequest().authenticated())
-//                .httpBasic(Customizer.withDefaults());
+//                .httpBasic(Customizer.withDefaults())
                 .formLogin(login -> login
                         .loginPage("/login")
                         .defaultSuccessUrl("/users")
