@@ -1,0 +1,19 @@
+{
+  "groups": [
+    {
+      "name": "app.service.logging",
+      "type": "by.itacademy.logging.config.LoggingProperties",
+      "sourceType": "by.itacademy.logging.config.LoggingProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.service.logging.enabled",
+      "type": "java.lang.Boolean",
+      "description": "enable service layer aop logging",
+      "sourceType": "by.itacademy.logging.config.LoggingProperties",
+      "defaultValue": false
+    }
+  ],
+  "hints": []
+}

@@ -49,3 +49,6 @@ spring:
 app:
   image:
     bucket: E:\AAA\JavaGuru\JavaEnterprise\Projects\spring-starter-javaguru\images
+
+app.service.logging:
+  enabled: true
